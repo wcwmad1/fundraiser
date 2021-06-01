@@ -100,21 +100,24 @@ initPayPalButton();
   </script>
   <h1 style="text-align: center;">Menu Options (Select option at top of the page)</h1>
   <ul>
-    <li><span><span style="font-weight: bold;">$60.00</span>  (2) Shrimp and Grits plates, a bottle of champagne. Delivered between 9:00 and 10:30 AM </span><span>$60.00</span></li>
-    <li><span><span style="font-weight: bold;">$135.00</span>  (2) Mesquite Buttered Lobster Tail dinners, Macaroni and Cheese, Asparagus,  Cheesecake desert, and a  bottle of Pinot Noir.  Delivered between 3:00 and 5:00 PM
-    </span><span>$135.00</span></li>
-    <li><span><span style="font-weight: bold;">$135.00</span>  (2) Surf and Turf dinner, Macaroni and Cheese, Asparagus, Cheesecake desert, and a bottle of Pinot Noir.  (Mesquite Buttered Lobster Tail and Rib Eye Steak)  
-      Delivered between 3:00 and 5:00 PM</span><span>$135</span></li>
-    <li><span><span style="font-weight: bold;">$175.00</span> (2) Shrimp and Grits plates, a bottle of champagne. (2) Surf and Turf dinners and Bottle of Pinot Noir.  (Mesquite Buttered Lobster Tail and Rib Eye Steak)
+    <li><span>(2) Shrimp and Grits plates, a bottle of champagne. Delivered between 9:00 and 10:30 AM </span><span class="price">$60.00</span></li>
+    <li><span>(2) Mesquite Buttered Lobster Tail dinners, Macaroni and Cheese, Asparagus,  Cheesecake desert, and a  bottle of Pinot Noir.  Delivered between 3:00 and 5:00 PM
+    </span><span class="price">$135.00</span></li>
+    <li><span>(2) Surf and Turf dinner, Macaroni and Cheese, Asparagus, Cheesecake desert, and a bottle of Pinot Noir.  (Mesquite Buttered Lobster Tail and Rib Eye Steak)  
+      Delivered between 3:00 and 5:00 PM</span><span class="price">$135.00</span></li>
+    <li><span> (2) Shrimp and Grits plates, a bottle of champagne. (2) Surf and Turf dinners and Bottle of Pinot Noir.  (Mesquite Buttered Lobster Tail and Rib Eye Steak)
       (Shrimp and Grits Delivered between 9:00 and 10:30 AM.   (Mesquite Buttered Lobster Tail and Rib Eye Steak) Delivered between 3:00 and 5:00 PM.
-     </span><span></span></li>
+     </span><span class="price">$175.00</span></li>
 </ul>
     <style>
       ul {
   list-style: none;
+  
   font-family: 'Marck Script';
 }
-
+body{
+  background-color: lightblue;
+}
 ul li {
   margin-bottom: 20px;
   padding-bottom: 10px ;
@@ -125,18 +128,21 @@ ul li {
 
 ul li span:nth-child(odd) {
   padding-right: 6px; 
-  color: #404B51;
+  color: black;
 }
 
 ul li span:nth-child(even) {
   float: right; 
   padding-left: 6px;
-  color: #fff;
+  color: #404B51;
 }
 
 ul span {
   position: relative;
   bottom: -7px;
+}
+.price{
+  color: blue;
 }
 
     </style>
