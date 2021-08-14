@@ -1,149 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-  <div id="smart-button-container">
-    <div style="text-align: center;">
-      <div style="margin-bottom: 1.25rem;">
-        <p>WCWMAD Fundraiser</p>
-        <select id="item-options"><option value="(2) Shrimp and Grits plates, a bottle of champagne." price="60">(2) Shrimp and Grits plates, a bottle of champagne. - 60 USD</option><option value="(2) Mesquite Buttered Lobster Tail dinners, Cheesecake desert, and a  bottle of Pinot Noir." price="135">(2) Mesquite Buttered Lobster Tail dinners, Cheesecake desert, and a  bottle of Pinot Noir. - 135 USD</option><option value="(2) Shrimp and grits plates, a bottle of champagne. (2) Surf and Turf dinners and Bottle of Pinot Noir." price="175">(2) Shrimp and grits plates, a bottle of champagne. (2) Surf and Turf dinners and Bottle of Pinot Noir. - 175 USD</option></select>
-        <select style="visibility: hidden" id="quantitySelect"></select>
+  </head>
+  <body>
+    <div id="smart-button-container">
+      <div style="text-align: center">
+        <div style="margin-bottom: 1.25rem">
+          <p>WCWMAD Fundraiser</p>
+          <select id="item-options">
+            <option value="Paint N Sip.  Shrimp and Grits" price="75">
+              Paint N Sip. Shrimp and Grits - 75 USD
+            </option>
+            <option
+              value="VIP Individual Ticket.  Chicken, Carne Asada, Vegan Soritas, Home-made tortillas,  Quesadillas, homemade guacamole and chips and print of Kenneth Gatewood's new print  The Greatest of Muhamad and Ali and Prince together for Why Can't We Make A Difference valued at $500.00."
+              price="200"
+            >
+              VIP Individual Ticket. Chicken, Carne Asada, Vegan Soritas,
+              Home-made tortillas, Quesadillas, homemade guacamole and chips and
+              print of Kenneth Gatewood's new print The Greatest of Muhamad and
+              Ali and Prince together for Why Can't We Make A Difference valued
+              at $500.00. - 200 USD
+            </option>
+            <option
+              value="VIP Couples  (2) Ticket.  Chicken, Carne Asada, Vegan Soritas, Home-made tortillas,  quesadillas, homemade guacamole and chips and print of Kenneth Gatewood's new print  The Greatest of Muhamad and Ali and Prince together for Why Can't We Make A Difference valued at $500.00."
+              price="350"
+            >
+              VIP Couples (2) Ticket. Chicken, Carne Asada, Vegan Soritas,
+              Home-made tortillas, quesadillas, homemade guacamole and chips and
+              print of Kenneth Gatewood's new print The Greatest of Muhamad and
+              Ali and Prince together for Why Can't We Make A Difference valued
+              at $500.00. - 350 USD
+            </option>
+          </select>
+          <select style="visibility: hidden" id="quantitySelect">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+          </select>
+        </div>
+        <div id="paypal-button-container"></div>
       </div>
-    <div id="paypal-button-container"></div>
     </div>
-  </div>
-  <script src="https://www.paypal.com/sdk/js?client-id=Adn5nyCFcKCtq2DBWFcwR5Tc3TxkQm3kx9tU1Np1xvEEyPL3ne2LVIspFYZ5DxE4APycKaXeCNwbohmy&currency=USD" data-sdk-integration-source="button-factory"></script>
-  <script>
-    function initPayPalButton() {
-      var shipping = 0;
-      var itemOptions = document.querySelector("#smart-button-container #item-options");
-  var quantity = parseInt();
-  var quantitySelect = document.querySelector("#smart-button-container #quantitySelect");
-  if (!isNaN(quantity)) {
-    quantitySelect.style.visibility = "visible";
-  }
-  var orderDescription = 'WCWMAD Fundraiser';
-  if(orderDescription === '') {
-    orderDescription = 'Item';
-  }
-  paypal.Buttons({
-    style: {
-      shape: 'pill',
-      color: 'silver',
-      layout: 'vertical',
-      label: 'pay',
-      
-    },
-    createOrder: function(data, actions) {
-      var selectedItemDescription = itemOptions.options[itemOptions.selectedIndex].value;
-      var selectedItemPrice = parseFloat(itemOptions.options[itemOptions.selectedIndex].getAttribute("price"));
-      var tax = (0 === 0) ? 0 : (selectedItemPrice * (parseFloat(0)/100));
-      if(quantitySelect.options.length > 0) {
-        quantity = parseInt(quantitySelect.options[quantitySelect.selectedIndex].value);
-      } else {
-        quantity = 1;
-      }
-
-      tax *= quantity;
-      tax = Math.round(tax * 100) / 100;
-      var priceTotal = quantity * selectedItemPrice + parseFloat(shipping) + tax;
-      priceTotal = Math.round(priceTotal * 100) / 100;
-      var itemTotalValue = Math.round((selectedItemPrice * quantity) * 100) / 100;
-
-      return actions.order.create({
-        purchase_units: [{
-          description: orderDescription,
-          amount: {
-            currency_code: 'USD',
-            value: priceTotal,
-            breakdown: {
-              item_total: {
-                currency_code: 'USD',
-                value: itemTotalValue,
-              },
-              shipping: {
-                currency_code: 'USD',
-                value: shipping,
-              },
-              tax_total: {
-                currency_code: 'USD',
-                value: tax,
-              }
-            }
-          },
-          items: [{
-            name: selectedItemDescription,
-            unit_amount: {
-              currency_code: 'USD',
-              value: selectedItemPrice,
+    <script
+      src="https://www.paypal.com/sdk/js?client-id=Adn5nyCFcKCtq2DBWFcwR5Tc3TxkQm3kx9tU1Np1xvEEyPL3ne2LVIspFYZ5DxE4APycKaXeCNwbohmy&enable-funding=venmo&currency=USD"
+      data-sdk-integration-source="button-factory"
+    ></script>
+    <script>
+      function initPayPalButton() {
+        var shipping = 0;
+        var itemOptions = document.querySelector(
+          "#smart-button-container #item-options"
+        );
+        var quantity = parseInt(8);
+        var quantitySelect = document.querySelector(
+          "#smart-button-container #quantitySelect"
+        );
+        if (!isNaN(quantity)) {
+          quantitySelect.style.visibility = "visible";
+        }
+        var orderDescription = "WCWMAD Fundraiser";
+        if (orderDescription === "") {
+          orderDescription = "Item";
+        }
+        paypal
+          .Buttons({
+            style: {
+              shape: "rect",
+              color: "blue",
+              layout: "vertical",
+              label: "checkout",
             },
-            quantity: quantity
-          }]
-        }]
-      });
-    },
-    onApprove: function(data, actions) {
-      return actions.order.capture().then(function(details) {
-        alert('Transaction completed by ' + details.payer.name.given_name + '!');
-      });
-    },
-    onError: function(err) {
-      console.log(err);
-    },
-  }).render('#paypal-button-container');
-}
-initPayPalButton();
-  </script>
-  <h1 style="text-align: center;">Menu Options (Select option at top of the page)</h1>
-  <ul>
-    <li><span>(2) Shrimp and Grits plates, a bottle of champagne. Delivered between 9:00 and 10:30 AM </span><span class="price">$60.00</span></li>
-    <li><span>(2) Mesquite Buttered Lobster Tail dinners, Macaroni and Cheese, Asparagus,  Cheesecake desert, and a  bottle of Pinot Noir.  Delivered between 3:00 and 5:00 PM
-    </span><span class="price">$135.00</span></li>
-    
-    <li><span> (2) Shrimp and Grits plates, a bottle of champagne. (2) Surf and Turf dinners and Bottle of Pinot Noir.  (Mesquite Buttered Lobster Tail and Rib Eye Steak)
-      (Shrimp and Grits Delivered between 9:00 and 10:30 AM.   (Mesquite Buttered Lobster Tail and Rib Eye Steak) Delivered between 3:00 and 5:00 PM.
-     </span><span class="price">$175.00</span></li>
-</ul>
+            createOrder: function (data, actions) {
+              var selectedItemDescription =
+                itemOptions.options[itemOptions.selectedIndex].value;
+              var selectedItemPrice = parseFloat(
+                itemOptions.options[itemOptions.selectedIndex].getAttribute(
+                  "price"
+                )
+              );
+              var tax =
+                0 === 0 || false
+                  ? 0
+                  : selectedItemPrice * (parseFloat(0) / 100);
+              if (quantitySelect.options.length > 0) {
+                quantity = parseInt(
+                  quantitySelect.options[quantitySelect.selectedIndex].value
+                );
+              } else {
+                quantity = 1;
+              }
+
+              tax *= quantity;
+              tax = Math.round(tax * 100) / 100;
+              var priceTotal =
+                quantity * selectedItemPrice + parseFloat(shipping) + tax;
+              priceTotal = Math.round(priceTotal * 100) / 100;
+              var itemTotalValue =
+                Math.round(selectedItemPrice * quantity * 100) / 100;
+
+              return actions.order.create({
+                purchase_units: [
+                  {
+                    description: orderDescription,
+                    amount: {
+                      currency_code: "USD",
+                      value: priceTotal,
+                      breakdown: {
+                        item_total: {
+                          currency_code: "USD",
+                          value: itemTotalValue,
+                        },
+                        shipping: {
+                          currency_code: "USD",
+                          value: shipping,
+                        },
+                        tax_total: {
+                          currency_code: "USD",
+                          value: tax,
+                        },
+                      },
+                    },
+                    items: [
+                      {
+                        name: selectedItemDescription,
+                        unit_amount: {
+                          currency_code: "USD",
+                          value: selectedItemPrice,
+                        },
+                        quantity: quantity,
+                      },
+                    ],
+                  },
+                ],
+              });
+            },
+            onApprove: function (data, actions) {
+              return actions.order.capture().then(function (orderData) {
+                // Full available details
+                console.log(
+                  "Capture result",
+                  orderData,
+                  JSON.stringify(orderData, null, 2)
+                );
+
+                // Show a success message within this page, e.g.
+                const element = document.getElementById(
+                  "paypal-button-container"
+                );
+                element.innerHTML = "";
+                element.innerHTML = "<h3>Thank you for your payment!</h3>";
+
+                // Or go to another URL:  actions.redirect('thank_you.html');
+              });
+            },
+            onError: function (err) {
+              console.log(err);
+            },
+          })
+          .render("#paypal-button-container");
+      }
+      initPayPalButton();
+    </script>
+    <!-- <h1 style="text-align: center">
+      Menu Options (Select option at top of the page)
+    </h1>
+    <ul>
+      <li>
+        <span
+          >(2) Shrimp and Grits plates, a bottle of champagne. Delivered between
+          9:00 and 10:30 AM </span
+        ><span class="price">$60.00</span>
+      </li>
+      <li>
+        <span
+          >(2) Mesquite Buttered Lobster Tail dinners, Macaroni and Cheese,
+          Asparagus, Cheesecake desert, and a bottle of Pinot Noir. Delivered
+          between 3:00 and 5:00 PM </span
+        ><span class="price">$135.00</span>
+      </li>
+
+      <li>
+        <span>
+          (2) Shrimp and Grits plates, a bottle of champagne. (2) Surf and Turf
+          dinners and Bottle of Pinot Noir. (Mesquite Buttered Lobster Tail and
+          Rib Eye Steak) (Shrimp and Grits Delivered between 9:00 and 10:30 AM.
+          (Mesquite Buttered Lobster Tail and Rib Eye Steak) Delivered between
+          3:00 and 5:00 PM. </span
+        ><span class="price">$175.00</span>
+      </li>
+    </ul>
     <style>
       ul {
-  list-style: none;
-  
-  font-family: 'Marck Script';
-}
-body{
-  background-color: lightblue;
-}
-ul li {
-  margin-bottom: 20px;
-  padding-bottom: 10px ;
-  border-bottom: 2px #404B51 dotted;
-  font-size: 26px;
-  line-height: 1;
-}
+        list-style: none;
 
-ul li span:nth-child(odd) {
-  padding-right: 6px; 
-  color: black;
-}
+        font-family: "Marck Script";
+      }
+      body {
+        background-color: lightblue;
+      }
+      ul li {
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px #404b51 dotted;
+        font-size: 26px;
+        line-height: 1;
+      }
 
-ul li span:nth-child(even) {
-  float: right; 
-  padding-left: 6px;
-  color: #404B51;
-}
+      ul li span:nth-child(odd) {
+        padding-right: 6px;
+        color: black;
+      }
 
-ul span {
-  position: relative;
-  bottom: -7px;
-}
-.price{
-  color: blue;
-}
+      ul li span:nth-child(even) {
+        float: right;
+        padding-left: 6px;
+        color: #404b51;
+      }
 
+      ul span {
+        position: relative;
+        bottom: -7px;
+      }
+      .price {
+        color: blue;
+      }
     </style>
-</body>
+  </body>
+</html> -->
+  </body>
 </html>
