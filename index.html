@@ -3,48 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>WCWMAD Fundraiser</title>
   </head>
   <body>
+    <div style="text-align: center">
+      <h2>VIP Tickets</h2>
+      <p>
+        Includes Chicken, Carne Asada, Vegan Sofritas, Home-made tortillas,
+        Quesadillas, homemade guacamole and chips. Sangrias and Margaritas. Also
+        included is a copy of Kenneth Gatewood’s newest print: the Greatest
+        Mohamed Ali and the incomparable Prince together.
+      </p>
+      <h2>VIP Couple Tickets (2)</h2>
+      <p>
+        Inlcludes Chicken, Carne Asada, Vegan Sofritas, Home-made tortillas,
+        quesadillas, homemade guacamole and chips. Also included is a copy of
+        Kenneth Gatewood’s newest print: the Greatest Mohamed Ali and the
+        incomparable Prince together.
+      </p>
+    </div>
     <div id="smart-button-container">
       <div style="text-align: center">
         <div style="margin-bottom: 1.25rem">
-          <p>WCWMAD Sip & Paint</p>
+          <h1>WCWMAD Sip and Paint</h1>
+          <h3 style="color: red">Select Option Below</h3>
           <select id="item-options">
-            <option value="Paint N Sip.  Shrimp and Grits" price="75.00">
-              Paint N Sip. Shrimp and Grits - 75.00 USD
+            <option value="VIP Individual Ticket" price="200">
+              VIP Individual Ticket - 200 USD
             </option>
-            <option
-              value="VIP Individual Ticket.  Chicken, Carne Asada, Vegan Soritas, Home-made tortillas,  Quesadillas, homemade guacamole and chips and print of Kenneth Gatewood's new print  The Greatest of Muhamad and Ali and Prince together for Why Can't We Make A Difference valued at $500.00."
-              price="200.00"
-            >
-              VIP Individual Ticket. Chicken, Carne Asada, Vegan Soritas,
-              Home-made tortillas, Quesadillas, homemade guacamole and chips and
-              print of Kenneth Gatewood's new print The Greatest of Muhamad and
-              Ali and Prince together for Why Can't We Make A Difference valued
-              at $500.00. - 200.00 USD
+            <option value="VIP Couples Ticket (2)" price="350">
+              VIP Couples Ticket (2) - 350 USD
             </option>
-            <option
-              value="VIP Couples  (2) Ticket.  Chicken, Carne Asada, Vegan Soritas, Home-made tortillas,  quesadillas, homemade guacamole and chips and print of Kenneth Gatewood's new print  The Greatest of Muhamad and Ali and Prince together for Why Can't We Make A Difference valued at $500.00."
-              price="350.00"
-            >
-              VIP Couples (2) Ticket. Chicken, Carne Asada, Vegan Soritas,
-              Home-made tortillas, quesadillas, homemade guacamole and chips and
-              print of Kenneth Gatewood's new print The Greatest of Muhamad and
-              Ali and Prince together for Why Can't We Make A Difference valued
-              at $500.00. - 350.00 USD
+            <option value=" Shrimp and Grits, and Mimosas" price="75">
+              Shrimp and Grits, and Mimosas - 75 USD
             </option>
-            <option
-              value="VIP Individual Payment Plan Initial Payment"
-              price="50.00"
-            >
-              VIP Individual Payment Plan Initial Payment - 50.00 USD
+            <option value="VIP Individual Ticket Payment Plan" price="50">
+              VIP Individual Ticket Payment Plan - 50 USD
             </option>
-            <option
-              value="VIP Couples (2) Payment Plan Initial Payment"
-              price="60.00"
-            >
-              VIP Couples (2) Payment Plan Initial Payment - 60.00 USD
+            <option value="VIP Couples Ticket (2) Payment Plan" price="60">
+              VIP Couples Ticket (2) Payment Plan - 60 USD
             </option>
           </select>
           <select style="visibility: hidden" id="quantitySelect"></select>
@@ -69,7 +66,7 @@
         if (!isNaN(quantity)) {
           quantitySelect.style.visibility = "visible";
         }
-        var orderDescription = "WCWMAD Sip & Paint ";
+        var orderDescription = "WCWMAD Sip and Paint";
         if (orderDescription === "") {
           orderDescription = "Item";
         }
